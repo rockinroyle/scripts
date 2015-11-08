@@ -74,7 +74,7 @@ make clobber
 echo "Clean house!!!!!!!!"
 lunch aospd_shamu-userdebug
 echo "Well, well, well. Check out the big brain on Brad!"
-make -j6 otapackage | tee $HOME/buildlog.txt
+make -j4 otapackage | tee $HOME/buildlog.txt
 
 if [ $? -eq 0 ]; then
 	echo "Build succesful!!!" `date`
