@@ -63,16 +63,14 @@ if [ $? -eq 1 ]; then
 	exit;
 fi
 
-if [ -e "$KERNEL_LOC" ]; then
-	rm -R $KERNEL_LOC
-	else mkdir -p $KERNEL_LOC
+if [ ! -e "$KERNEL_LOC" ]; then
+ mkdir -p $KERNEL_LOC
 fi
 
 if [ -e "$KERNEL_PRODUCT" ]; then
-	mv $KERNEL_PRODUCT $KERNEL_LOC/zImage-dtb;
-	else mv $KERNEL_PRODUCT $KERNEL_LOC/zImage-dtb | tee $LOGS/buildlog.txt;
+	cp $KERNEL_PRODUCT $KERNEL_LOC/zImage-dtb | tee ~/ROMlog/buildlog.txt;
+	else exit;
 	echo "Kernel build failed! Ending script! Check ~/ROMlog/buildlog.txt";
-	exit;
 fi
 
 cd $ROM
