@@ -9,9 +9,10 @@ KERNEL_SRC="$ROM/aospdK"
 KERNEL_PRODUCT="$KERNEL_SRC/arch/arm/boot/zImage-dtb"
 KERNEL_LOC="$ROM/device/moto/shamu-kernel"
 DEFCON='aospd_defconfig'
-UBER_DIR="$HOME/toolchains/arm-eabi-4.8-cortex-a15"
-UBER_GCC="$HOME/toolchains/arm-eabi-4.8-cortex-a15/bin/arm-eabi-"
+UBER_DIR="$HOME/toolchains/arm-eabi-4.9-cortex-a15"
+UBER_GCC="$HOME/toolchains/arm-eabi-4.9-cortex-a15/bin/arm-eabi-"
 LOGS="$HOME/ROMlog"
+CROSS_COMP=`export ARCH="arm"; export SUBARCH="arm"; export CROSS_COMPILE=~/toolchains/arm-eabi-4.8-cortex-a15/bin/arm-eabi-`
 
 # Home base
 
@@ -21,14 +22,10 @@ fi
 
 # Setup Cross compilation
 
-export ARCH="arm"
-export SUBARCH="arm"
-
 if [ -e "$UBER_DIR" ]; then
-	export CROSS_COMPILE="$UBER_GCC";
-	echo "Building kernel with UBER-4.8-arm-eabi-cortex-a15"
-else export CROSS_COMPILE="$DEFAULT_GCC";
-	echo "Defaulting to AOSP prebuilt arm-eabi toolchain";
+	CROSS_COMP;
+	echo "Building kernel with UBER-4.9-arm-eabi-cortex-a15"
+else echo error with toolchain;
 fi
 	
 # Start building
@@ -64,9 +61,7 @@ if [ $? -eq 1 ]; then
 	exit;
 fi
 
-if [ ! -e "$KERNEL_LOC" ]; then
  mkdir -p $KERNEL_LOC
-fi
 
 if [ -e "$KERNEL_PRODUCT" ]; then
 	cp $KERNEL_PRODUCT $KERNEL_LOC/zImage-dtb | tee ~/ROMlog/buildlog.txt;

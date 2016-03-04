@@ -63,9 +63,7 @@ if [ $? -eq 1 ]; then
 	exit;
 fi
 
-if [ ! -e "$KERNEL_LOC" ]; then
  mkdir -p $KERNEL_LOC
-fi
 
 if [ -e "$KERNEL_PRODUCT" ]; then
 	cp $KERNEL_PRODUCT $KERNEL_LOC/zImage-dtb | tee ~/ROMlog/buildlog.txt;
