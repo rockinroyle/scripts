@@ -1,7 +1,8 @@
 #! /bin/bash
 
 #
-# Functions
+# Functions Library
+#
 #
 # Copyright (C) 2017-2018 @rockinroyle aka Ralph L Royle III
 #
@@ -46,5 +47,5 @@ printWARNING () {
 #############################################
 
 printUSAGE () {
-	echo "USAGE:" $USAGE
+	echo "USAGE:" $@
 }
