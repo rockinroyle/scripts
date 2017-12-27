@@ -30,7 +30,7 @@
 USAGE="`basename $0` [-c|-d] [device]"
 
 if [ $# -lt "2" ]; then
-	printUSAGE;
+	printUSAGE $USAGE;
 	exit 1;
 fi
 
@@ -46,7 +46,7 @@ case "$1" in
 	   ;;
 	-d)brunch "$2"
 	   ;;
-	 *)printUSAGE
+	 *)printUSAGE $USAGE
 	   exit 1
 	   ;;
 esac
