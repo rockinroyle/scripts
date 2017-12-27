@@ -46,5 +46,5 @@ printWARNING () {
 #############################################
 
 printUSAGE () {
-	echo "USAGE:" $USAGE $@ 
+	echo "USAGE:" $USAGE
 }
