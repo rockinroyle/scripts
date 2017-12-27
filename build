@@ -20,8 +20,6 @@
 
 # ROM Build script
 
-USAGE=" `basename $0` [-c|-d] [device]"
-
 # Source helper script with functions that reduce script size
 
 . functions.sh
@@ -29,21 +27,28 @@ USAGE=" `basename $0` [-c|-d] [device]"
 
 # Check proper script usage before running
 
-if [$# -lt 2]; then
-	printUSAGE
-	exit 1
+USAGE="`basename $0` [-c|-d] [device]"
+
+if [ $# -lt "2" ]; then
+	printUSAGE;
+	exit 1;
 fi
+
+# Kick off build environment setup
+
+kj;
+env;
 
 case "$1" in
 	-c)rm -rf "$HOME"/.ccache 
-	   make clobber 
+	   cln 
 	   brunch "$2"
 	   ;;
 	-d)brunch "$2"
-	 *)printUSAGE
-	   break
 	   ;;
-	   exit
+	 *)printUSAGE
+	   exit 1
+	   ;;
 esac
 
 exit
