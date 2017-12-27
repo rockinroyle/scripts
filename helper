@@ -19,15 +19,15 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/> 
 
 kj () {
-		JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g"
-		./prebuilts/sdk/tools/jack-admin kill-server
-		./prebuilts/sdk/tools/jack-admin start-server
+	JACK_SERVER_VM_ARGUMENTS="-Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4g"
+	./prebuilts/sdk/tools/jack-admin kill-server
+	./prebuilts/sdk/tools/jack-admin start-server
 }
 
 env () {
-		build/envsetup.sh
+	build/envsetup.sh
 }
 		
 cln () {
-		rm -rf ~/.ccache && make clobber
+	rm -rf ~/.ccache && make clobber
 }
