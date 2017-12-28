@@ -1,6 +1,6 @@
 # Personal Linux and Android script repository
 
-  This is a constant WIP as I learn and practice
+This is a constant WIP as I learn and practice
   
 # Enter at your own risk!!!!
 
@@ -18,6 +18,5 @@ A script I found for converting .m4a files to .mp3 files. This base version is n
 
 # noobbuilds
 personal script for compiling Noobbuilds ROM by @fwhem at Github. 
-
-# Noobbuilds ROM source
+Noobbuilds ROM source:
 https://github.com/noobbuilds/noobbuilds_manifest
