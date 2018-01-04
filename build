@@ -19,6 +19,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/> 
 
 # ROM Build script
+# Run the script im the root directory of ROM's source
+# Syntax: "bash ./build [-c|-d] [device]" 
 
 # Source helper script with functions that reduce script size
 
