@@ -24,8 +24,8 @@
 
 # Source helper script with functions that reduce script size
 
-. functions.sh
-. helper.sh
+. ./functions.sh
+. ./helper.sh
 
 # Check proper script usage before running
 
