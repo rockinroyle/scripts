@@ -49,3 +49,61 @@ printWARNING () {
 printUSAGE () {
 	echo "USAGE:" $@
 }
+
+#############################################
+# Name: promptYESNO
+# Desc: ask a yes/no question
+# Args: $1 -> The prompt
+#       $2 -> The default answer (optional)
+# Vars: YESNO -> set to the users response
+#                y for yes, n for no
+#############################################
+
+promptYESNO () {
+	if [ $# -lt 1 ]; then
+		printERROR "Insufficient Arguments!"
+		return 1
+	fi
+	
+	DEFAULT=""
+	YESNO=""
+	
+	case "$@" in
+		[yY]|[yY][eE][sS])
+			DEFAULT=y ;;
+		[nN]|[nN]{oO])
+			DEFAULT=n ;;
+	esac
+	
+	while : 
+	do
+	
+		printf "$1 (y/n?)"
+		
+		if [ -n "$DEFAULT" ]; then
+			printf "[$DEFAULT] "
+		fi
+		
+		read YESNO
+		
+		if [ -z "$YESNO" ]; then
+			YESNO="$DEFAULT"
+		fi
+		
+		case "YESNO" in
+			[yY]|[yY][eE][sS])
+				YESNO=y ; break ;;
+			[[nN]|[nN][oO]
+				YESNO=n ; break ;;
+			*)
+				YESNO="" ;;
+		esac
+		
+	done
+	
+	export YESNO
+	unset DEFAULT
+	return 0
+}
+
+	
