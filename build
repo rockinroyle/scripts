@@ -1,4 +1,4 @@
-#!/bin/bash -v
+#!/bin/bash
 
 #
 # ROM build script
@@ -22,10 +22,17 @@
 # Run the script im the root directory of ROM's source
 # Syntax: "bash ./build [-c|-d] [device]" 
 
-# Source helper script with functions that reduce script size
+# Set functions
 
-. ./functions.sh
-. ./helper.sh
+#############################################
+# Name: printUSAGE
+# Desc: prints a USAGE message then exits
+# Args: $@ -> message to print
+#############################################
+
+printUSAGE () {
+	echo "USAGE:" $@
+}
 
 # Check proper script usage before running
 
@@ -38,19 +45,19 @@ fi
 
 # Kick off build environment setup
 
-kj;
-env;
+. ./build/envsetup.sh
+
+# case statement to define arguments specifying "clean" or "dirty" build
 
 case "$1" in
-	-c)rm -rf "$HOME"/.ccache 
-	   cln 
+	-c)rm -rf ~/.ccache && make clobber 
 	   brunch "$2"
 	   ;;
 	-d)brunch "$2"
 	   ;;
 	 *)printUSAGE $USAGE
-	   exit 1
+	   return 1
 	   ;;
 esac
 
-exit
+return 0
