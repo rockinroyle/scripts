@@ -66,4 +66,4 @@ case "$1" in
 	   ;;
 esac
 
-return 0
+exit 0
