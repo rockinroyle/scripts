@@ -20,7 +20,10 @@
 
 
 # Run the script im the root directory of ROM's source
-# Syntax: "bash ./build [-c|-d] [device]" 
+# Syntax: "bash ./build [-c|-d|-w] [device]" 
+# Args: -c -> "clean" clobber build dir
+#       -d -> "dirty" build dirty and clean nothing (expert only!!! USE AT OWN RISK!!!!)
+#       -w -> "wipe" clobber build dir and wipe .ccache
 
 # Set functions
 
@@ -36,7 +39,7 @@ printUSAGE () {
 
 # Check proper script usage before running
 
-USAGE="`basename $0` [-c|-d] [device]"
+USAGE="`basename $0` [-c|-d|-w] [device]"
 
 if [ $# -lt "2" ]; then
 	printUSAGE $USAGE;
@@ -46,17 +49,20 @@ fi
 # Kick off build environment setup
 
 . ./build/envsetup.sh
+${USE_CCACHE:='1'}; export USE_CCACHE
 
 # case statement to define arguments specifying "clean" or "dirty" build
 
 case "$1" in
-	-c)rm -rf ~/.ccache && make clobber 
+	-c)make clobber
 	   brunch "$2"
 	   ;;
 	-d)brunch "$2"
 	   ;;
+	-w)rm -rf $HOME/.ccache && make clobber
+	   ;;
 	 *)printUSAGE $USAGE
-	   return 1
+	   exit 1
 	   ;;
 esac
 
