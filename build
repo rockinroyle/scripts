@@ -49,7 +49,7 @@ fi
 # Kick off build environment setup
 
 . ./build/envsetup.sh
-${USE_CCACHE:='1'}; export USE_CCACHE
+USECCACHE=${default:-'1'} ; export USE_CCACHE
 
 # case statement to define arguments specifying "clean" or "dirty" build
 
