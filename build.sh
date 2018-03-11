@@ -60,6 +60,7 @@ case "$1" in
 	-d)brunch "$2"
 	   ;;
 	-w)rm -rf $HOME/.ccache && make clobber
+	   brunch "$2"
 	   ;;
 	 *)printUSAGE $USAGE
 	   exit 1
