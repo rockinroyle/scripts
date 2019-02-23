@@ -25,7 +25,7 @@ kj () {
 }
 
 env () {
-	build/envsetup.sh
+	. build/envsetup.sh
 }
 		
 cln () {
